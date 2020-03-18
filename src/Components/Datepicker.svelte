@@ -43,6 +43,7 @@
     ['November', 'Nov'],
     ['December', 'Dec']
   ];
+  export let daysHighlighted = [];
 
   export let style = '';
   
@@ -299,6 +300,7 @@
           {selected}
           {highlighted}
           {shouldShakeDate}
+          {daysHighlighted}
           id={visibleMonthId}
           on:dateSelected={e => registerSelection(e.detail)} 
         />

@@ -10,6 +10,15 @@
   export let highlighted;
   export let shouldShakeDate;
   export let direction;
+  export let daysHighlighted;
+
+  function eachDaysHighlighted(day) {
+    let _highlighted = false;
+    for (let i = 0; i < daysHighlighted.length; i += 1) {
+      if(areDatesEquivalent(day.date, daysHighlighted[i])) _highlighted = true;
+    }
+    return highlighted;
+  }
 </script>
 
 <div 
@@ -25,7 +34,8 @@
       class:is-disabled={!day.selectable}
     >
       <button 
-        class="day--label" 
+        class="day--label"
+        class:day-highlighted={eachDaysHighlighted(day)}
         class:selected={areDatesEquivalent(day.date, selected)}
         class:highlighted={areDatesEquivalent(day.date, highlighted)}
         class:shake-date={shouldShakeDate && areDatesEquivalent(day.date, shouldShakeDate)}

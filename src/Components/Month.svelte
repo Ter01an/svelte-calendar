@@ -6,6 +6,7 @@
   export let selected;
   export let highlighted;
   export let shouldShakeDate;
+  export let daysHighlighted;
 
   let lastId = id;
   let direction;
@@ -23,6 +24,7 @@
       {selected} 
       {highlighted} 
       {shouldShakeDate} 
+      {daysHighlighted}
       {direction}
       on:dateSelected 
     />
