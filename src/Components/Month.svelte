@@ -10,10 +10,12 @@
 
   let lastId = id;
   let direction;
+  let listDaysHighlighted = [];
 
   $: {
     direction = lastId < id ? 1 : -1;
     lastId = id;
+    listDaysHighlighted = daysHighlighted;
   }
 </script>
 
@@ -23,8 +25,8 @@
       days={week.days} 
       {selected} 
       {highlighted} 
-      {shouldShakeDate} 
-      {daysHighlighted}
+      {shouldShakeDate}
+      daysHighlighted={listDaysHighlighted}
       {direction}
       on:dateSelected 
     />

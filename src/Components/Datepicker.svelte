@@ -44,9 +44,9 @@
     ['December', 'Dec']
   ];
   export let daysHighlighted = [];
-
   export let style = '';
-  
+
+
   // theming variables:
   export let buttonBackgroundColor = '#fff';
   export let buttonBorderColor = '#eee';
@@ -64,11 +64,14 @@
     return dow;
   })();
 
+  let listDaysHighlighted = [];
   let highlighted = today;
   let shouldShakeDate = false;
   let shakeHighlightTimeout;
   let month = today.getMonth();
   let year = today.getFullYear();
+
+  $: listDaysHighlighted = daysHighlighted;
 
   let isOpen = false;
   let isClosing = false;
@@ -300,7 +303,7 @@
           {selected}
           {highlighted}
           {shouldShakeDate}
-          {daysHighlighted}
+          daysHighlighted={listDaysHighlighted}
           id={visibleMonthId}
           on:dateSelected={e => registerSelection(e.detail)} 
         />

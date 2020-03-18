@@ -12,12 +12,22 @@
   export let direction;
   export let daysHighlighted;
 
+  let listDaysHighlighted = [],
+      items = [];
+
+  $: {
+    items = days;
+    listDaysHighlighted = daysHighlighted;
+  }
+
   function eachDaysHighlighted(day) {
     let _highlighted = false;
-    for (let i = 0; i < daysHighlighted.length; i += 1) {
-      if(areDatesEquivalent(day.date, daysHighlighted[i])) _highlighted = true;
+    if(listDaysHighlighted) {
+      for (let i = 0; i < listDaysHighlighted.length; i += 1) {
+        if (areDatesEquivalent(day.date, listDaysHighlighted[i])) _highlighted = true;
+      }
     }
-    return highlighted;
+    return _highlighted;
   }
 </script>
 
@@ -26,7 +36,7 @@
   in:fly|local={{ x: direction * 50, duration: 180, delay: 90 }}
   out:fade|local={{ duration: 180 }}
 >
-  {#each days as day}
+  {#each items as day}
     <div 
       class="day" 
       class:outside-month={!day.partOfMonth}
